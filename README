@@ -17,11 +17,9 @@ http://outoftime.github.com/sunspot
 
 == Installation
 
-Download the plugin and place it under vendor/plugins.
+gem "sunspot_autocomplete", ">= 0.0.3", :git => "git@github.com:xponrails/sunspot_autocomplete.git"
 
-Run the following rake task to copy the plugin's assets to your public directory. This will copy jquery.js and solr-autocompleter to your public/javascripts.
-
-  rake sunspot_autocomplete:copy_assets
+Copy the gem's assets to your assets directory.
 
 == Usage
 
@@ -64,27 +62,26 @@ To be able to autocomplete/autosuggest a model's attribute, call 'autocomplete'/
     end
   end
 
-In your view, Add the following script tags (in the given order) to be able to use the view helpers.
+In your application.js, Add the following lines.
 
-  <script type="text/javascript" src="/javascripts/jquery.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/ajax-solr/core/Core.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/ajax-solr/core/AbstractManager.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/ajax-solr/managers/Manager.jquery.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/ajax-solr/core/Parameter.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/ajax-solr/core/ParameterStore.js"></script>
-  <script type="text/javascript" src="/javascripts/solr-autocomplete/jquery-autocomplete/jquery.autocomplete.js"></script>
+    //= require solr-autocomplete/ajax-solr/core/Core
+    //= require solr-autocomplete/ajax-solr/core/AbstractManager
+    //= require solr-autocomplete/ajax-solr/managers/Manager.jquery
+    //= require solr-autocomplete/ajax-solr/core/Parameter
+    //= require solr-autocomplete/ajax-solr/core/ParameterStore
+    //= require solr-autocomplete/jquery-autocomplete/jquery.autocomplete
 
-Also, add the following stylesheet to use the basic style included. Alternatively, you can override those style rules to force your design's look and feel.
+Also, add the following line in your application.css to use the basic style included. Alternatively, you can override those style rules to force your design's look and feel.
 
-  <link type="text/css" rel="stylesheet" href="/javascripts/solr-autocomplete/jquery-autocomplete/jquery.autocomplete.css" />
+   *= require solr-autocomplete/jquery.autocomplete
 
 In your view, to create a text field with autocomplete:
 
-  <%=autocomplete_text_field "post", "title", "http://127.0.0.1:8983/solr/", "post_title"%>
+  <%= autocomplete_text_field "post", "title", "http://127.0.0.1:8983/solr/", "post_title"%>
 
 And to create a text field with autosuggest:
 
-  <%=autosuggest_text_field "post", "author", "http://127.0.0.1:8983/solr/", "post_author"%>
+  <%= autosuggest_text_field "post", "author", "http://127.0.0.1:8983/solr/", "post_author"%>
 
 You can view documentation for more advanced features of the helpers.
 

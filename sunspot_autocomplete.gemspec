@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["DevInterface"]
   s.email       = ["stefano.mancini@devinterface.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{sunspot autocomplete capability}
+  s.description = %q{sunspot autocomplete capability}
 
   s.rubyforge_project = "sunspot_autocomplete"
 
